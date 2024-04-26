@@ -1,0 +1,46 @@
+{
+  "name": "ensure-config",
+  "version": "1.0.0",
+  "module": "src/index.ts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    "bun": "./dist/index.js",
+    "node": "./dist/cjs/index.js",
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "description": "Fail early and enforces presence of env variables",
+  "keywords": [
+    "Env",
+    "Config"
+  ],
+  "author": "Kilian Brachtendorf <kilian.brachtendorf@t-online.de>",
+  "repository": {
+    "url": "git+https://github.com/KilianB/ensure-config.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/KilianB/ensure-config/issues"
+  },
+  "homepage": "https://github.com/KilianB/ensure-config#readme",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
+    "prepare": "bun run build",
+    "publish:npm": "npm publish"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/*",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
+}
