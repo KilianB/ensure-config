@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  prepare-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +17,7 @@ jobs:
       - run: bun test
 
   publish-npm:
-    needs: prepare-test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +25,7 @@ jobs:
         with:
           bun-version: latest
           registry-url: https://registry.npmjs.org/
+      - run: bun install
       - run: bun publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
