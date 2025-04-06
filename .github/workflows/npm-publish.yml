@@ -26,6 +26,7 @@ jobs:
           bun-version: latest
           registry-url: https://registry.npmjs.org/
       - run: bun install
+      - run: bun run build
       - run: bun publish
         env:
           NPM_CONFIG_TOKEN: ${{secrets.npm_token}}
